@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 const API = import.meta.env.VITE_BASE_URL;
 
-function BankdatEditForm() {
+function BankdataEditForm() {
   let { id } = useParams();
   const navigate = useNavigate();
 
@@ -29,11 +29,11 @@ function BankdatEditForm() {
 
   // Update a bookmark. Redirect to show view
   const updateBankdata = () => {
-    console.log(`${API}/bookmarks/${id}`);
+    console.log(`${API}/banksdata/${id}`);
 
     fetch(`${API}/banksdata/${id}`, {
       method: "PUT",
-      body: JSON.stringify(bookmark),
+      body: JSON.stringify(bankdata),
       headers: {
         "Content-Type": "application/json",
       },
@@ -139,11 +139,11 @@ function BankdatEditForm() {
         <br />
         <input type="submit" />
       </form>
-      <Link to={`/bookmarks/${id}`}>
+      <Link to={`/bank/${id}`}>
         <button>Nevermind!</button>
       </Link>
     </div>
   );
 }
 
-export default BankdatEditForm;
+export default BankdataEditForm;
