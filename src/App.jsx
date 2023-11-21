@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 
 import Navbar from "./Components/Navbar";
+import Banksdata from "./Components/Banksdata";
 
 function App() {
  
@@ -14,7 +15,7 @@ function App() {
         <main>
           <Routes>
             {/* <Route path="/" element={<Home />} /> */}
-            {/* <Route path="/bookmarks" element={<Index />} /> */}
+            <Route path="/bankdata" element={<Banksdata />} />
             {/* <Route path="/bookmarks/new" element={<New />} /> */}
             {/* <Route exact path="/bookmarks/:id" element={<Show />} /> */}
             {/* <Route path="/bookmarks/:id/edit" element={<Edit />} /> */}
