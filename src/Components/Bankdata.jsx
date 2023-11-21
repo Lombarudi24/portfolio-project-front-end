@@ -20,7 +20,7 @@ function Bankdata({ bankdata }) {
         <Link to={`/banksdata/${bankdata.id}`}>{bankdata.email}</Link>
       </td>
       <td>
-        <Link to={`/banksdata/${bankdata.id}`}>{bankdata.mobil_num}</Link>
+        <Link to={`/banksdata/${bankdata.id}`}>{bankdata.mobile_num}</Link>
       </td>
     </tr>
   );

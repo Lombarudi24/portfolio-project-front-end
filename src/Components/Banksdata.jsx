@@ -31,7 +31,6 @@ function Banksdata() {
               <th>First Name</th>
               <th>Middle Name</th>
               <th>Last Name</th>
-              <th>Last Name</th>
               <th>Date Of Birth</th>
               <th>Email</th>
               <th>Phone Number</th>
