@@ -3,31 +3,35 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 const API = import.meta.env.VITE_BASE_URL;
 
-function BookmarkEditForm() {
+function BankdatEditForm() {
   let { id } = useParams();
   const navigate = useNavigate();
 
-  const [bookmark, setBookmark] = useState({
-    name: "",
-    url: "",
-    category: "",
-    description: "",
-    is_favorite: false,
+  const [bankdata, setBankdata] = useState({
+    ssn: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
+    dob: "",
+    email: "",
+    city: "",
+    mobile_num: "",
+    employer: "",
   });
 
   const handleTextChange = (event) => {
-    setBookmark({ ...bookmark, [event.target.id]: event.target.value });
+    setBankdata({ ...bankdata, [event.target.id]: event.target.value });
   };
 
-  const handleCheckboxChange = () => {
-    setBookmark({ ...bookmark, is_favorite: !bookmark.is_favorite });
-  };
+//   const handleCheckboxChange = () => {
+//     setBookmark({ ...bookmark, is_favorite: !bookmark.is_favorite });
+//   };
 
   // Update a bookmark. Redirect to show view
-  const updateBookmark = () => {
+  const updateBankdata = () => {
     console.log(`${API}/bookmarks/${id}`);
 
-    fetch(`${API}/bookmarks/${id}`, {
+    fetch(`${API}/banksdata/${id}`, {
       method: "PUT",
       body: JSON.stringify(bookmark),
       headers: {
@@ -35,76 +39,104 @@ function BookmarkEditForm() {
       },
     })
       .then((response) => {
-        navigate(`/bookmarks/${id}`);
+        navigate(`/banksdata/${id}`);
       })
       .catch((error) => console.error("catch", error));
   };
 
   // On page load, fill in the form with the bookmark data.
   useEffect(() => {
-    fetch(`${API}/bookmarks/${id}`)
+    fetch(`${API}/banksdata/${id}`)
       .then((response) => {
         return response.json();
       })
-      .then((responseJSON) => {
-        setBookmark(responseJSON);
+      .then((response) => {
+        setBankdata(response);
       })
       .catch((error) => console.error(error));
   }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateBookmark();
+    updateBankdata();
   };
 
   return (
     <div className="Edit">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="socialsecuritynumber">Social Number</label>
         <input
-          id="name"
-          value={bookmark.name}
-          type="text"
+          id="ssn"
+          value={bankdata.ssn}
+          type="number"
           onChange={handleTextChange}
-          placeholder="Name of Website"
+          placeholder="Social Security Num."
           required
         />
-        <label htmlFor="url">URL:</label>
+        <label htmlFor="url">Firts Name</label>
         <input
-          id="url"
+          id="fname"
           type="text"
-          pattern="http[s]*://.+"
+          name="firstname"
+          value={bankdata.firstname}
+          placeholder="First Name"
+          onChange={handleTextChange}
           required
-          value={bookmark.url}
-          placeholder="http://"
-          onChange={handleTextChange}
-        />
-        <label htmlFor="category">Category:</label>
+        />{" "}
+        <label htmlFor="lname">Last Name:</label>
         <input
-          id="category"
+          id="lastname"
           type="text"
-          name="category"
-          value={bookmark.category}
-          placeholder="educational, inspirational, ..."
+          name="lastname"
+          value={bankdata.lastname}
+          placeholder="Lastname"
           onChange={handleTextChange}
-        />
-        <label htmlFor="isFavorite">Favorite:</label>
+          required
+        />{" "}
+        <label htmlFor="middlename">Middle Name</label>
         <input
-          id="isFavorite"
-          type="checkbox"
-          onChange={handleCheckboxChange}
-          checked={bookmark.is_favorite}
-        />
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          name="description"
-          value={bookmark.description}
+          id="mname"
+          type="text"
+          name="middlename"
+          value={bankdata.middlename}
+          placeholder="Middlename"
           onChange={handleTextChange}
-          placeholder="Describe why you bookmarked this site"
-        />
+        />{" "}
+        <label htmlFor="dob">DOB</label>
+        <input
+          id="dob"
+          name="dob"
+          value={bankdata.dob}
+          onChange={handleTextChange}
+          placeholder="Date of Birth"
+          required
+        />{" "}
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          value={bankdata.email}
+          onChange={handleTextChange}
+          placeholder="Email Address "
+        />{" "}
+        <label htmlFor="dob">Phone Num</label>
+        <input
+          id="phone"
+          name="dob"
+          value={bankdata.mobile_num}
+          onChange={handleTextChange}
+          placeholder="Phone Number"
+        />{" "}
+        <label htmlFor="dob">Employer</label>
+        <input
+          id="employer"
+          name="employer"
+          value={bankdata.employer}
+          onChange={handleTextChange}
+          placeholder="Employer"
+              />
+              
         <br />
-
         <input type="submit" />
       </form>
       <Link to={`/bookmarks/${id}`}>
@@ -114,4 +146,4 @@ function BookmarkEditForm() {
   );
 }
 
-export default BookmarkEditForm;
+export default BankdatEditForm;

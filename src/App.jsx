@@ -4,6 +4,7 @@ import './App.css'
 
 import Navbar from "./Components/Navbar";
 import Banksdata from "./Components/Banksdata";
+import BankdataNewForm from "./Components/BankdataNewForm";
 
 function App() {
  
@@ -16,7 +17,7 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/bankdata" element={<Banksdata />} />
-            {/* <Route path="/bookmarks/new" element={<New />} /> */}
+            <Route path="/bankdata/new" element={<BankdataNewForm />} />
             {/* <Route exact path="/bookmarks/:id" element={<Show />} /> */}
             {/* <Route path="/bookmarks/:id/edit" element={<Edit />} /> */}
             {/* <Route path="*" element={<FourOFour />} /> */}

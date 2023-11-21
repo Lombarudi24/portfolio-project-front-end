@@ -48,7 +48,7 @@ function BankdataNewForm() {
   return (
     <div className="New">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Social Number:</label>
+        <label htmlFor="socialsecuritynumber">Social Number</label>
         <input
           id="ssn"
           value={bankdata.ssn}
@@ -57,16 +57,16 @@ function BankdataNewForm() {
           placeholder="Social Security Num."
           required
         />
-        <label htmlFor="url">Firts Name:</label>
+        <label htmlFor="url">Firts Name</label>
         <input
           id="fname"
           type="text"
           name="firstname"
-          required
           value={bankdata.firstname}
-          placeholder="http://"
+          placeholder="First Name"
           onChange={handleTextChange}
-        />
+          required
+        />{" "}
         <label htmlFor="lname">Last Name:</label>
         <input
           id="lastname"
@@ -75,7 +75,8 @@ function BankdataNewForm() {
           value={bankdata.lastname}
           placeholder="Lastname"
           onChange={handleTextChange}
-        />
+          required
+        />{" "}
         <label htmlFor="middlename">Middle Name</label>
         <input
           id="mname"
@@ -84,41 +85,42 @@ function BankdataNewForm() {
           value={bankdata.middlename}
           placeholder="Middlename"
           onChange={handleTextChange}
-        />
+        />{" "}
         <label htmlFor="dob">DOB</label>
-        <textarea
+        <input
           id="dob"
           name="dob"
           value={bankdata.dob}
           onChange={handleTextChange}
           placeholder="Date of Birth"
-        />
-        <label htmlFor="dob">DOB</label>
-        <textarea
-          id="dob"
-          name="dob"
-          value={bankdata.description}
-          onChange={handleTextChange}
-          placeholder="Date of Birth"
-        />
-        <label htmlFor="dob">Email</label>
-        <textarea
+          required
+        />{" "}
+        <label htmlFor="emial">Email</label>
+        <input
           id="email"
           name="email"
           value={bankdata.email}
           onChange={handleTextChange}
           placeholder="Email Address "
         />{" "}
+        <label htmlFor="city">City</label>
+        <input
+          id="city"
+          name="city"
+          value={bankdata.city}
+          onChange={handleTextChange}
+          placeholder="City you Live "
+        />{" "}
         <label htmlFor="dob">Phone Num</label>
-        <textarea
+        <input
           id="phone"
           name="dob"
           value={bankdata.mobile_num}
           onChange={handleTextChange}
-          placeholder="Date of Birth"
-        />
+          placeholder="Phone Number"
+        />{" "}
         <label htmlFor="dob">Employer</label>
-        <textarea
+        <input
           id="employer"
           name="employer"
           value={bankdata.employer}
