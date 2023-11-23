@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Bankdata from "./Bankdata"
 
 const API = import.meta.env.VITE_BASE_URL;
 
 function Banksdata() {
+  const Navigate = useNavigate();
   const [banksdata, setBanksdata] = useState([]);
 
     const fetchData = async () => {
@@ -22,6 +24,10 @@ function Banksdata() {
       fetchData();
     }, []);
 
+  const handleBackHome = () => {
+      Navigate(`/`)
+    }
+  
   return (
     <div className="banksdata">
       <section>
@@ -42,6 +48,7 @@ function Banksdata() {
             })}
           </tbody>
         </table>
+        <button className="btn" onClick={handleBackHome}>Back</button>
       </section>
     </div>
   );

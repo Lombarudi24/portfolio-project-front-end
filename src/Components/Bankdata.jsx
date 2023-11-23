@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+// function FixingDob(date) {
+//   let fixedDob = date.split("T");
+//   fixedDob = moment(date).format("MMMM D YYYY");
+//   return fixedDob;
+// }
+ 
+
 function Bankdata({ bankdata }) {
+
+    
+
   return (
     <tr>
       <td>
@@ -14,7 +25,10 @@ function Bankdata({ bankdata }) {
         <Link to={`/banksdata/${bankdata.id}`}>{bankdata.lastname}</Link>
       </td>
       <td>
-        <Link to={`/banksdata/${bankdata.id}`}>{bankdata.dob}</Link>
+        <Link to={`/banksdata/${bankdata.id}`}>
+          {bankdata.dob}
+        </Link>
+        
       </td>
       <td>
         <Link to={`/banksdata/${bankdata.id}`}>{bankdata.email}</Link>
@@ -23,6 +37,7 @@ function Bankdata({ bankdata }) {
         <Link to={`/banksdata/${bankdata.id}`}>{bankdata.mobile_num}</Link>
       </td>
     </tr>
+    
   );
 }
 

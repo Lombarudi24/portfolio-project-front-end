@@ -36,10 +36,6 @@ function BankdataNewForm() {
     setBankdata({ ...bankdata, [event.target.id]: event.target.value });
   };
 
-  // const handleCheckboxChange = () => {
-  //   setBankdata({ ...bankdata, is_active: !bankdata.is_active });
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     addBankdata();
@@ -57,10 +53,9 @@ function BankdataNewForm() {
           placeholder="Social Security Num."
           required
         />
-        <label htmlFor="url">Firts Name</label>
+        <label htmlFor="firstname">First Name</label>
         <input
-          id="fname"
-          type="text"
+          id="firstname"
           name="firstname"
           value={bankdata.firstname}
           placeholder="First Name"
@@ -70,7 +65,6 @@ function BankdataNewForm() {
         <label htmlFor="lname">Last Name:</label>
         <input
           id="lastname"
-          type="text"
           name="lastname"
           value={bankdata.lastname}
           placeholder="Lastname"
@@ -80,7 +74,6 @@ function BankdataNewForm() {
         <label htmlFor="middlename">Middle Name</label>
         <input
           id="mname"
-          type="text"
           name="middlename"
           value={bankdata.middlename}
           placeholder="Middlename"
@@ -114,7 +107,7 @@ function BankdataNewForm() {
         <label htmlFor="dob">Phone Num</label>
         <input
           id="phone"
-          name="dob"
+          name="phone"
           value={bankdata.mobile_num}
           onChange={handleTextChange}
           placeholder="Phone Number"
@@ -128,7 +121,7 @@ function BankdataNewForm() {
           placeholder="Employer"
         />
         <br />
-        <input type="submit" />
+        <input type="submit" onClick={handleNew} />
       </form>
     </div>
   );

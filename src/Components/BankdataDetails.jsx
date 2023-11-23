@@ -10,21 +10,21 @@ function BankdataDetails() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${API}/bookmarks/${id}`)
+    fetch(`${API}/banksdata/${id}`)
       .then((response) => response.json())
       .then((responseJSON) => setBankdata(responseJSON))
       .catch((error) => console.error(error));
   }, [id, API]);
 
   useEffect(() => {
-    console.log(bookmark);
+    console.log(bankdata);
   }, [bankdata.name]);
 
   const handleDelete = () => {
-    deleteBookmark();
+    deleteBankdata();
   };
 
-  const deleteBookmark = () => {
+  const deleteBankdata = () => {
     fetch(`${API}/banksdata/${id}`, {
       method: "DELETE",
     })
@@ -65,3 +65,4 @@ function BankdataDetails() {
 }
 
 export default BankdataDetails;
+
