@@ -5,6 +5,7 @@ const API = import.meta.env.VITE_BASE_URL;
 
 function BankdataNewForm() {
   const navigate = useNavigate();
+
   const [bankdata, setBankdata] = useState({
     ssn: "",
     firstname: "",
@@ -27,7 +28,7 @@ function BankdataNewForm() {
       },
     })
       .then(() => {
-        navigate(`/`);
+        navigate(`/banksdata`);
       })
       .catch((error) => console.error("catch", error));
   };
@@ -121,7 +122,13 @@ function BankdataNewForm() {
           placeholder="Employer"
         />
         <br />
-        <input type="submit" onClick={handleNew} />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="btn btn-primary mx-3"
+        >
+          Submit
+        </button>{" "}
       </form>
     </div>
   );

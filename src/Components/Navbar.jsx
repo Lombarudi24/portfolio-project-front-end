@@ -5,10 +5,10 @@ export default function Navbar() {
   return (
     <nav>
       <h1>
-        <Link to="/banksdata">Banks Data</Link>
+        <Link to="/Banksdata">Banks Data</Link>
       </h1>
       <button>
-        <Link to="/bankdata/new">New Costumer</Link>
+        <Link to="/new">New Costumer</Link>
       </button>
     </nav>
   );

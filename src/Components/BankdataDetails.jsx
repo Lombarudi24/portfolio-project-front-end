@@ -16,9 +16,6 @@ function BankdataDetails() {
       .catch((error) => console.error(error));
   }, [id, API]);
 
-  // useEffect(() => {
-  //   console.log(bankdata);
-  // }, [bankdata.firstname]);
 
   const handleDelete = () => {
     deleteBankdata();
@@ -39,41 +36,9 @@ function BankdataDetails() {
   // }
 
   return (
-        
     <article>
-      <h6>
-        <span>
-          {bankdata.firstname}
-        </span>
-    
-      </h6>
-      <h6>{bankdata.lastnane}</h6>
-      <p>{bankdata.dob}</p>
-      <div className="showNavigation">
-        <div>
-          <Link to={`/banksdata`}>
-            <button>Back</button>
-          </Link>
-        </div>
-        <div>
-          <Link to={`/banksdata/${id}/edit`}>
-            <button>Edit</button>
-          </Link>
-        </div>
-        <div>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </div>
-        
-    </article>
-  );
-} 
-
-  export default BankdataDetails;
-
-   
-      // <h6>{bankdata.firstname}</h6>
-      {/* <label htmlFor="firstname">First Name</label>
+      <h6>{bankdata.firstname}</h6>
+      <label htmlFor="firstname">First Name</label>
       <input
         id="firstname"
         name="firstname"
@@ -140,7 +105,30 @@ function BankdataDetails() {
         onChange={handleTextChange}
         placeholder="Employer"
       />
-      <br /> */}
+      <br />
+      <div className="showNavigation">
+        <div>
+          <Link to={`/banksdata`}>
+            <button>Back</button>
+          </Link>
+        </div>
+        <div>
+          <Link to={`/banksdata/${id}/edit`}>
+            <button>Edit</button>
+          </Link>
+        </div>
+        <div>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+      </div>
+    </article>
+  );
+} 
+
+  export default BankdataDetails;
+
+   
+     
 //       <div>
 //         <button onClick={handleDelete}>Delete</button>{" "}
 //       </div>
