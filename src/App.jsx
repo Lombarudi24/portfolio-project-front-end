@@ -7,7 +7,9 @@ import New from "./Pages/New";
 import Edit from "./Pages/Edit";
 import Index from "./Pages/Index";
 import Home from "./Pages/Home";
-// import Banksdata from "./Components/Banksdata";
+import Show from "./Pages/show";
+// import BankdataDetails from "./Components/BankdataDetails";
+
 
 function App() {
  
@@ -21,8 +23,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/banksdata" element={<Index />} />
             <Route path="/new" element={<New />} />
-            {/* <Route exact path="/:id" element={<Show />} /> */}
-            {/* <Route path="/:id/edit" element={<Edit />} /> */}
+            <Route exact path="/banksdata/:id" element={<Show />} />
+            <Route path="banksdata/:id/edit" element={<Edit />} />
             {/* <Route path="*" element={<FourOFour />} /> */}
           </Routes>
         </main>

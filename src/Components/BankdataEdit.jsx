@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+
 
 const API = import.meta.env.VITE_BASE_URL;
 
@@ -23,35 +25,42 @@ function BankdataEditForm() {
     setBankdata({ ...bankdata, [event.target.id]: event.target.value });
   };
 
-//   const handleCheckboxChange = () => {
-//     setBookmark({ ...bookmark, is_favorite: !bookmark.is_favorite });
-//   };
-
-  // Update a bookmark. Redirect to show view
+ 
   const updateBankdata = () => {
-    console.log(`${API}/banksdata/${id}`);
-
-    fetch(`${API}/banksdata/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(bankdata),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    axios
+      .put(
+        `${API}/banksdata/${id}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
-        navigate(`/banksdata/${id}`);
+        console.log("Updated bank data:", response.data);
+        // Assuming you have a 'navigate' function for routing purposes
+        navigate(`/${id}`);
       })
-      .catch((error) => console.error("catch", error));
-  };
+      .catch((error) => console.error("Error:", error));
+    };
 
-  // On page load, fill in the form with the bookmark data.
   useEffect(() => {
-    fetch(`${API}/banksdata/${id}`)
+    axios.get(`${API}/${id}`)
       .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        setBankdata(response);
+        const updatedBankdata = response.data || 
+          {
+    ssn: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
+    dob: "",
+    email: "",
+    city: "",
+    mobile_num: "",
+    employer: "",
+  }
+        setBankdata(updatedBankdata);
       })
       .catch((error) => console.error(error));
   }, [id]);
@@ -70,36 +79,29 @@ function BankdataEditForm() {
           value={bankdata.ssn}
           type="number"
           onChange={handleTextChange}
-          placeholder="Social Security Num."
-          required
         />
-        <label htmlFor="url">Firts Name</label>
+        <label htmlFor="firstname">Firts Name</label>
         <input
           id="fname"
           type="text"
           name="firstname"
           value={bankdata.firstname}
-          placeholder="First Name"
           onChange={handleTextChange}
-          required
         />{" "}
-        <label htmlFor="lname">Last Name:</label>
+        <label htmlFor="lastname">Last Name</label>
         <input
           id="lastname"
           type="text"
           name="lastname"
           value={bankdata.lastname}
-          placeholder="Lastname"
           onChange={handleTextChange}
-          required
         />{" "}
         <label htmlFor="middlename">Middle Name</label>
         <input
-          id="mname"
+          id="name"
           type="text"
           name="middlename"
           value={bankdata.middlename}
-          placeholder="Middlename"
           onChange={handleTextChange}
         />{" "}
         <label htmlFor="dob">DOB</label>
@@ -108,8 +110,6 @@ function BankdataEditForm() {
           name="dob"
           value={bankdata.dob}
           onChange={handleTextChange}
-          placeholder="Date of Birth"
-          required
         />{" "}
         <label htmlFor="email">Email</label>
         <input
@@ -117,15 +117,13 @@ function BankdataEditForm() {
           name="email"
           value={bankdata.email}
           onChange={handleTextChange}
-          placeholder="Email Address "
         />{" "}
         <label htmlFor="dob">Phone Num</label>
         <input
           id="phone"
-          name="dob"
+          name="phone"
           value={bankdata.mobile_num}
           onChange={handleTextChange}
-          placeholder="Phone Number"
         />{" "}
         <label htmlFor="dob">Employer</label>
         <input
@@ -133,15 +131,20 @@ function BankdataEditForm() {
           name="employer"
           value={bankdata.employer}
           onChange={handleTextChange}
-          placeholder="Employer"
-              />
-              
+        />
         <br />
-        <input type="submit" />
       </form>
-      <Link to={`/bank/${id}`}>
-        <button>Nevermind!</button>
-      </Link>
+      <br />
+      <div className="text-center">
+        <Link to={`/${id}`} className="">
+          <button className="btn btn-primary mx-3">Nevermind</button>
+        </Link> {' '}
+        <Link to={`/${id}`} className="">
+          <button className="btn btn-primary mx-3" onClick={handleSubmit}>
+            Save
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

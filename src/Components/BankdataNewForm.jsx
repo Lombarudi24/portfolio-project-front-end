@@ -17,7 +17,7 @@ function BankdataNewForm() {
     employer: "",
   });
 
-  // Add a bookmark. Redirect to the index view.
+  // Add a  bankdata and Redirect to the index view.
   const addBankdata = () => {
     fetch(`${API}/banksdata`, {
       method: "POST",
@@ -27,7 +27,7 @@ function BankdataNewForm() {
       },
     })
       .then(() => {
-        navigate(`/banksdata`);
+        navigate(`/`);
       })
       .catch((error) => console.error("catch", error));
   };
@@ -62,7 +62,7 @@ function BankdataNewForm() {
           onChange={handleTextChange}
           required
         />{" "}
-        <label htmlFor="lname">Last Name:</label>
+        <label htmlFor="lastname">Last Name:</label>
         <input
           id="lastname"
           name="lastname"
@@ -104,7 +104,7 @@ function BankdataNewForm() {
           onChange={handleTextChange}
           placeholder="City you Live "
         />{" "}
-        <label htmlFor="dob">Phone Num</label>
+        <label htmlFor="Phone">Phone Num</label>
         <input
           id="phone"
           name="phone"
@@ -112,7 +112,7 @@ function BankdataNewForm() {
           onChange={handleTextChange}
           placeholder="Phone Number"
         />{" "}
-        <label htmlFor="dob">Employer</label>
+        <label htmlFor="emplyer">Employer</label>
         <input
           id="employer"
           name="employer"

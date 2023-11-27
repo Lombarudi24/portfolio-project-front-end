@@ -16,7 +16,7 @@ function Bankdata({ bankdata }) {
   return (
     <tr>
       <td>
-        <Link to={`/banksdata/${bankdata.id}`}> {bankdata.firstname}</Link>
+        <Link to={`/show/${bankdata.id}`}> {bankdata.firstname}</Link>
       </td>
       <td>
         <Link to={`/banksdata/${bankdata.id}`}>{bankdata.middlename}</Link>
